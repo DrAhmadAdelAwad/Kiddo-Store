@@ -1,0 +1,16 @@
+.form-style {
+  width: 50%;
+}
+
+@media (max-width: 567px) {
+  .form-style {
+    width: 90%;
+  }
+  .search {
+    display: none;
+  }
+}
+
+.userinfo {
+  display: none;
+}

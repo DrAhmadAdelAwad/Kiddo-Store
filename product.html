@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <title>Product Details</title>
+</head>
+<body>
+  <div class="container mt-5" id="productDetails"></div>
+
+  <script>
+    const products = JSON.parse(localStorage.getItem("products"));
+    const index = localStorage.getItem("selectedProduct");
+    const product = products[index];
+    
+    const images = Array.isArray(product.imgUrl) ? product.imgUrl : [product.imgUrl];
+
+    const imageGallery = images.map(
+      img => `<img src="${img}" class="img-thumbnail m-2" style="max-width: 200px;">`
+    ).join("");
+
+    const detailsHTML = `
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">${product.title}</h2>
+          <p><strong>Size:</strong> ${product.size}</p>
+          <p><strong>Price:</strong> ${product.price} L.E</p>
+          <div class="mt-3"><strong>Images:</strong><br>${imageGallery}</div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("productDetails").innerHTML = detailsHTML;
+  </script>
+</body>
+</html>
+
+
